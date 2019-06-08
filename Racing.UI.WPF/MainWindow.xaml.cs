@@ -17,7 +17,7 @@ namespace Racing.UI.WPF
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            frmMain.NavigationService.Navigate(new StartScreen());
+            frmMain.NavigationService.Navigate(new UserWindow());
         }
     }
 }
