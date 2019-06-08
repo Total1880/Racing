@@ -15,6 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
+            <Button Name="btnStartScreen" Content="Start Screen" Click="BtnStartScreen_Click"></Button>
             <Button Name="btnAddDriver" Content="Add Driver" Click="BtnAddDriver_Click"></Button>
         </StackPanel>
 

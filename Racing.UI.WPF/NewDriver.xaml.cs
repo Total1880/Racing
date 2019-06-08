@@ -64,6 +64,8 @@ namespace Racing.UI.WPF
 
                 Driver newDriver = new Driver(firstName, lastName, speed);
                 DatabaseManager.Instance.DriverRepository.AddDriver(newDriver);
+
+                NavigationService.Navigate(new StartScreen());
             }
         }
     }

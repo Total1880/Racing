@@ -10,7 +10,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Frame Name="frmMain" Margin="0,0,-0.4,0"/>
+        <Frame Name="frmMain" NavigationUIVisibility="Hidden"></Frame>
         
     </Grid>
 </Window>
