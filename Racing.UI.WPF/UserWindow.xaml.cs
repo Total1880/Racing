@@ -17,5 +17,10 @@ namespace Racing.UI.WPF
         {
             frmUserFrame.NavigationService.Navigate(new StartScreen());
         }
+
+        private void BtnAddDriver_Click(object sender, RoutedEventArgs e)
+        {
+            frmUserFrame.NavigationService.Navigate(new NewDriver());
+        }
     }
 }

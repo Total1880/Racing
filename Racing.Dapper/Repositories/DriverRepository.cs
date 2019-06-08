@@ -21,5 +21,22 @@ namespace Racing.Dapper.Repositories
                 );
             }
         }
+
+        public void AddDriver(Driver driver)
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    INSERT INTO Driver (DriverId, FirstName, LastName, Speed)
+                    VALUES (@DriverId, @FirstName, @LastName, @Speed)
+                ", new
+                {
+                    DriverId = driver.DriverId,
+                    FirstName = driver.FirstName,
+                    LastName = driver.LastName,
+                    Speed = driver.Speed
+                });
+            }
+        }
     }
 }

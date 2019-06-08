@@ -23,6 +23,7 @@ namespace Racing.BL.Models
             firstName = inputFirstName;
             lastName = inputLastName;
             speed = inputSpeed;
+            driverId = Guid.NewGuid();
         }
         #endregion
 

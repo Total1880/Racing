@@ -15,7 +15,7 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
-            <Button Name="btnAddDriver" Content="Add Driver"></Button>
+            <Button Name="btnAddDriver" Content="Add Driver" Click="BtnAddDriver_Click"></Button>
         </StackPanel>
 
         <Frame Name="frmUserFrame" Grid.Column="1"></Frame>
