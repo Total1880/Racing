@@ -103,13 +103,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Racing.BL\Racing.BL.csproj">
+      <Project>{A2313839-A624-408E-99E2-E99FCAF41D0E}</Project>
+      <Name>Racing.BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Racing.Dapper\Racing.Dapper.csproj">
       <Project>{9B6F2EE2-A253-4626-A5B1-0E1A39097F6E}</Project>
       <Name>Racing.Dapper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Racing\Racing.BL.csproj">
-      <Project>{B46E8207-DCCE-4541-88EC-6BC36EAB93C3}</Project>
-      <Name>Racing.BL</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

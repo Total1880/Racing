@@ -9,8 +9,4 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.6.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Racing.BL\Racing.BL.csproj" />
-  </ItemGroup>
-
 </Project>
