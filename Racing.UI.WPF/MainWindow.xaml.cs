@@ -10,7 +10,6 @@ namespace Racing.UI.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<Driver> allDrivers = new List<Driver>();
         public MainWindow()
         {
             InitializeComponent();
@@ -18,9 +17,7 @@ namespace Racing.UI.WPF
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            allDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
-
-            dgAllDrivers.ItemsSource = allDrivers;
+            frmMain.NavigationService.Navigate(new StartScreen());
         }
     }
 }
