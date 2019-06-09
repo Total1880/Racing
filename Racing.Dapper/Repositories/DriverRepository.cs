@@ -38,5 +38,19 @@ namespace Racing.Dapper.Repositories
                 });
             }
         }
+
+        public void DeleteDriver(Driver driver)
+        {
+            using(var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    DELETE FROM Driver
+                    WHERE DriverId = @DriverId
+                ", new
+                {
+                    DriverId = driver.DriverId
+                });
+            }
+        }
     }
 }

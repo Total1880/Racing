@@ -1,4 +1,5 @@
 ﻿using Racing.BL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -23,6 +24,22 @@ namespace Racing.UI.WPF
             allDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
 
             dgAllDrivers.ItemsSource = allDrivers;
+        }
+
+        private void BtnDeleteDriver_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Driver driver = (Driver)dgAllDrivers.SelectedItem;
+
+                DatabaseManager.Instance.DriverRepository.DeleteDriver(driver);
+
+                NavigationService.Navigate(new ShowDrivers());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Select a driver");
+            }
         }
     }
 }
