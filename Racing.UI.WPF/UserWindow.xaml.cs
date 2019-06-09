@@ -32,5 +32,10 @@ namespace Racing.UI.WPF
         {
             frmUserFrame.NavigationService.Navigate(new ShowRaceTracks());
         }
+
+        private void BtnAddRaceTrack_Click(object sender, RoutedEventArgs e)
+        {
+            frmUserFrame.NavigationService.Navigate(new NewRaceTrack());
+        }
     }
 }

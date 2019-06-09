@@ -64,6 +64,9 @@
     <Compile Include="NewDriver.xaml.cs">
       <DependentUpon>NewDriver.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NewRaceTrack.xaml.cs">
+      <DependentUpon>NewRaceTrack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowDrivers.xaml.cs">
       <DependentUpon>ShowDrivers.xaml</DependentUpon>
     </Compile>
@@ -87,6 +90,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewDriver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NewRaceTrack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

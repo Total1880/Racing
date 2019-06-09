@@ -19,5 +19,21 @@ namespace Racing.Dapper.Repositories
                 );
             }
         }
+
+        public void AddRaceTrack(RaceTrack raceTrack)
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    INSERT INTO RaceTrack (RaceTrackId, Name, Length)
+                    VALUES (@RaceTrackId, @Name, @Length)
+                ", new
+                {
+                    RaceTrackId = raceTrack.RaceTrackId,
+                    Name = raceTrack.Name,
+                    Length = raceTrack.Length
+                });
+            }
+        }
     }
 }
