@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using Racing.UI.WPF.RaceEngine;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Racing.UI.WPF
@@ -36,6 +37,11 @@ namespace Racing.UI.WPF
         private void BtnAddRaceTrack_Click(object sender, RoutedEventArgs e)
         {
             frmUserFrame.NavigationService.Navigate(new NewRaceTrack());
+        }
+
+        private void BtnRace_Click(object sender, RoutedEventArgs e)
+        {
+            frmUserFrame.NavigationService.Navigate(new StartingConditions());
         }
     }
 }

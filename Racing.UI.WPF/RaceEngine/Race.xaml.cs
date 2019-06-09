@@ -23,6 +23,7 @@ namespace Racing.UI.WPF.RaceEngine
     {
         List<Driver> listOfDrivers = new List<Driver>();
         RaceTrack raceTrack = new RaceTrack();
+
         public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack)
         {
             InitializeComponent();
