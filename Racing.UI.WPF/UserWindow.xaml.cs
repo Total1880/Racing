@@ -15,7 +15,7 @@ namespace Racing.UI.WPF
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            frmUserFrame.NavigationService.Navigate(new StartScreen());
+            frmUserFrame.NavigationService.Navigate(new ShowDrivers());
         }
 
         private void BtnAddDriver_Click(object sender, RoutedEventArgs e)
@@ -25,7 +25,7 @@ namespace Racing.UI.WPF
 
         private void BtnStartScreen_Click(object sender, RoutedEventArgs e)
         {
-            frmUserFrame.NavigationService.Navigate(new StartScreen());
+            frmUserFrame.NavigationService.Navigate(new ShowDrivers());
         }
     }
 }

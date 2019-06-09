@@ -6,7 +6,7 @@ namespace Racing.BL.Models
 {
     public class Driver
     {
-        private Guid driverId = new Guid();
+        private readonly Guid driverId;
         private readonly string firstName;
         private readonly string lastName;
         private int speed = -1;
@@ -31,7 +31,6 @@ namespace Racing.BL.Models
         public Guid DriverId
         {
             get { return driverId; }
-            set { driverId = value; }
         }
 
         public string FirstName

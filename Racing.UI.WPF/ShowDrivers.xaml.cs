@@ -9,11 +9,11 @@ namespace Racing.UI.WPF
     /// <summary>
     /// Interaction logic for StartScreen.xaml
     /// </summary>
-    public partial class StartScreen : Page
+    public partial class ShowDrivers : Page
     {
         List<Driver> allDrivers = new List<Driver>();
 
-        public StartScreen()
+        public ShowDrivers()
         {
             InitializeComponent();
         }

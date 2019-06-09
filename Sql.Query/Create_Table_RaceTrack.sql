@@ -1,0 +1,8 @@
+USE Racing
+GO
+
+CREATE TABLE RaceTrack (
+	RacetrackId UNIQUEIDENTIFIER DEFAULT NEWID() NOT NULL,
+	Name VARCHAR(50) NOT NULL,
+	Length int NOT NULL
+	)

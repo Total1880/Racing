@@ -64,8 +64,8 @@
     <Compile Include="NewDriver.xaml.cs">
       <DependentUpon>NewDriver.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StartScreen.xaml.cs">
-      <DependentUpon>StartScreen.xaml</DependentUpon>
+    <Compile Include="ShowDrivers.xaml.cs">
+      <DependentUpon>ShowDrivers.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
@@ -87,7 +87,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StartScreen.xaml">
+    <Page Include="ShowDrivers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
