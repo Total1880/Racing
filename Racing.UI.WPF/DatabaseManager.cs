@@ -15,6 +15,7 @@ namespace Racing.UI.WPF
         public static DatabaseManager Instance => _manager;
 
         public DriverRepository DriverRepository => new DriverRepository();
+        public RaceTrackRepository RaceTrackRepository => new RaceTrackRepository();
 
         private DatabaseManager()
         {

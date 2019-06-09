@@ -67,6 +67,9 @@
     <Compile Include="ShowDrivers.xaml.cs">
       <DependentUpon>ShowDrivers.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShowRaceTracks.xaml.cs">
+      <DependentUpon>ShowRaceTracks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserWindow.xaml.cs">
       <DependentUpon>UserWindow.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShowDrivers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShowRaceTracks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

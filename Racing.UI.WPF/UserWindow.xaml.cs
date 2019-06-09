@@ -27,5 +27,10 @@ namespace Racing.UI.WPF
         {
             frmUserFrame.NavigationService.Navigate(new ShowDrivers());
         }
+
+        private void BtnShowAllRaceTracks_Click(object sender, RoutedEventArgs e)
+        {
+            frmUserFrame.NavigationService.Navigate(new ShowRaceTracks());
+        }
     }
 }
