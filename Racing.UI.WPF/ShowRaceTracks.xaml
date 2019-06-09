@@ -9,6 +9,11 @@
       Title="ShowRaceTracks" Loaded="OnLoaded">
 
     <Grid>
-        <DataGrid Name="dgAllRaceTracks"></DataGrid>
+        <DataGrid Name="dgAllRaceTracks" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Length" Binding="{Binding Length}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>
