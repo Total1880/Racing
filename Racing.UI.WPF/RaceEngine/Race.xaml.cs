@@ -19,6 +19,13 @@ namespace Racing.UI.WPF.RaceEngine
             race = new BL.Models.Race(inputListOfDrivers, inputRaceTrack);
 
             DatabaseManager.Instance.RaceRepository.CreateRace(race);
+
+            foreach (var driver in inputListOfDrivers)
+            {
+                RaceParticipant participant = new RaceParticipant(driver);
+
+                listOfParticipants.Add(participant);
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Racing.BL.Models
     {
         private int distance;
 
-        public RaceParticipant()
+        public RaceParticipant(Driver driver) : base (driver.FirstName,driver.LastName,driver.Speed, driver.DriverId)
         {
             distance = 0;
         }
