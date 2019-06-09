@@ -10,6 +10,7 @@ namespace Racing.UI.WPF.RaceEngine
     public partial class Race : Page
     {
         BL.Models.Race race;
+        List<RaceParticipant> listOfParticipants = new List<RaceParticipant>();
 
         public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack)
         {
