@@ -35,5 +35,21 @@ namespace Racing.Dapper.Repositories
                 });
             }
         }
+
+        public void DeleteRaceTrack(RaceTrack raceTrack)
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                connection.Execute(@"
+                    DELETE FROM RaceTrack
+                    WHERE RaceTrackId = @RaceTrackId
+                ", new
+                {
+                    RaceTrackId = raceTrack.RaceTrackId
+                }
+                );
+            }
+            
+        }
     }
 }

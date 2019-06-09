@@ -1,4 +1,5 @@
 ﻿using Racing.BL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -23,6 +24,22 @@ namespace Racing.UI.WPF
             allRaceTracks = DatabaseManager.Instance.RaceTrackRepository.GetAllRaceTracks().ToList();
 
             dgAllRaceTracks.ItemsSource = allRaceTracks;
+        }
+
+        private void BtnDeleteRaceTrack_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                RaceTrack raceTrack = (RaceTrack)dgAllRaceTracks.SelectedItem;
+
+                DatabaseManager.Instance.RaceTrackRepository.DeleteRaceTrack(raceTrack);
+
+                NavigationService.Navigate(new ShowRaceTracks());
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Select a racetrack");
+            }
         }
     }
 }

@@ -9,11 +9,20 @@
       Title="ShowRaceTracks" Loaded="OnLoaded">
 
     <Grid>
-        <DataGrid Name="dgAllRaceTracks" AutoGenerateColumns="False">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <DataGrid Name="dgAllRaceTracks" AutoGenerateColumns="False" Grid.Column="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Length" Binding="{Binding Length}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Column="1">
+            <Button Name="btnDeleteRaceTrack" Content="Delete racetrack" Click="BtnDeleteRaceTrack_Click"></Button>
+        </StackPanel>
     </Grid>
 </Page>
