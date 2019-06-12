@@ -26,6 +26,14 @@ namespace Racing.UI.WPF.RaceEngine
 
                 listOfParticipants.Add(participant);
             }
+
+            dgParticipants.ItemsSource = listOfParticipants;
+        }
+
+        private IEnumerable<RaceParticipant> Turn(List<RaceParticipant> raceParticipants)
+        {
+
+            return raceParticipants;
         }
     }
 }
