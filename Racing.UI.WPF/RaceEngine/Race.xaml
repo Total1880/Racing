@@ -21,5 +21,9 @@
                 <DataGridTextColumn Header="Distance" Binding="{Binding Distance}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Column="1">
+            <Button Name="btnNextTurn" Content="Next turn" Click="BtnNextTurn_Click"></Button>
+        </StackPanel>
     </Grid>
 </Page>

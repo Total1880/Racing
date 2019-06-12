@@ -1,5 +1,7 @@
 ﻿using Racing.BL.Models;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Controls;
 
 namespace Racing.UI.WPF.RaceEngine
@@ -32,8 +34,20 @@ namespace Racing.UI.WPF.RaceEngine
 
         private IEnumerable<RaceParticipant> Turn(List<RaceParticipant> raceParticipants)
         {
+            Random random = new Random();
+            foreach (var participant in raceParticipants)
+            {
+                participant.Distance += random.Next(0, participant.Speed);
+            }
 
-            return raceParticipants;
+            return raceParticipants.OrderByDescending(x => x.Distance);
+        }
+
+        private void BtnNextTurn_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            listOfParticipants = Turn(listOfParticipants).ToList();
+
+            dgParticipants.ItemsSource = listOfParticipants;
         }
     }
 }
