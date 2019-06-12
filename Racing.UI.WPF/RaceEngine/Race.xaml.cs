@@ -40,7 +40,14 @@ namespace Racing.UI.WPF.RaceEngine
                 participant.Distance += random.Next(0, participant.Speed);
             }
 
-            return raceParticipants.OrderByDescending(x => x.Distance);
+            raceParticipants = raceParticipants.OrderByDescending(x => x.Distance).ToList();
+
+            if(raceParticipants[0].Distance >= race.RaceLength)
+            {
+                btnNextTurn.IsEnabled = false;
+            }
+
+            return raceParticipants;
         }
 
         private void BtnNextTurn_Click(object sender, System.Windows.RoutedEventArgs e)

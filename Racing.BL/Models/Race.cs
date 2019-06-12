@@ -9,12 +9,14 @@ namespace Racing.BL.Models
         private readonly Guid raceId;
         private readonly List<Driver> listOfParticipants;
         private readonly Guid raceTrackId;
+        private readonly int raceLength;
 
         public Race(List<Driver> inputListOfParticipants, RaceTrack raceTrack)
         {
             raceId = Guid.NewGuid();
             listOfParticipants = inputListOfParticipants;
             raceTrackId = raceTrack.RaceTrackId;
+            raceLength = raceTrack.Length;
         }
 
         #region Accessors
@@ -31,6 +33,11 @@ namespace Racing.BL.Models
         public Guid RaceTrackId
         {
             get { return raceTrackId; }
+        }
+
+        public int RaceLength
+        {
+            get { return raceLength; }
         }
         #endregion
     }
