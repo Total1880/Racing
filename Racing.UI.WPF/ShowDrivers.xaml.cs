@@ -41,5 +41,10 @@ namespace Racing.UI.WPF
                 MessageBox.Show("Select a driver");
             }
         }
+
+        private void BtnAddDriver_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NewDriver());
+        }
     }
 }

@@ -41,5 +41,10 @@ namespace Racing.UI.WPF
                 MessageBox.Show("Select a racetrack");
             }
         }
+
+        private void BtnAddRaceTrack_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new NewRaceTrack());
+        }
     }
 }

@@ -23,6 +23,7 @@
 
         <StackPanel Grid.Column="1">
             <Button Name="btnDeleteRaceTrack" Content="Delete racetrack" Click="BtnDeleteRaceTrack_Click"></Button>
+            <Button Name="btnAddRaceTrack" Content="Add racetrack" Click="BtnAddRaceTrack_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

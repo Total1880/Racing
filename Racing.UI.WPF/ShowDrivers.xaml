@@ -23,6 +23,7 @@
         </DataGrid>
         <StackPanel Grid.Column="1">
             <Button Name="btnDeleteDriver" Content="Delete driver" Click="BtnDeleteDriver_Click"></Button>
+            <Button Name="btnAddDriver" Content="Add Driver" Click="BtnAddDriver_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

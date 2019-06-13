@@ -16,9 +16,8 @@
 
         <StackPanel Grid.Column="0">
             <Button Name="btnStartScreen" Content="Start Screen" Click="BtnStartScreen_Click"></Button>
-            <Button Name="btnAddDriver" Content="Add Driver" Click="BtnAddDriver_Click"></Button>
+            <Button Name="btnShowAllDriver" Content="Show All Drivers" Click="BtnShowAllDriver_Click"></Button>
             <Button Name="btnShowAllRaceTracks" Content="Show all racetracks" Click="BtnShowAllRaceTracks_Click"></Button>
-            <Button Name="btnAddRaceTrack" Content="Add racetrack" Click="BtnAddRaceTrack_Click"></Button>
             <Button Name="btnRace" Content="Race" Click="BtnRace_Click"></Button>
         </StackPanel>
 
