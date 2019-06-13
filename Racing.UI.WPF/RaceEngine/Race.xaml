@@ -9,6 +9,21 @@
       Title="Race">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Name="dgParticipants" AutoGenerateColumns="False" Grid.Column="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First name" Binding="{Binding FirstName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Last name" Binding="{Binding LastName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Distance" Binding="{Binding Distance}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Column="1">
+            <Button Name="btnNextTurn" Content="Next turn" Click="BtnNextTurn_Click"></Button>
+        </StackPanel>
     </Grid>
 </Page>
