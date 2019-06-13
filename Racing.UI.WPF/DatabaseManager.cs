@@ -16,6 +16,7 @@ namespace Racing.UI.WPF
 
         public DriverRepository DriverRepository => new DriverRepository();
         public RaceTrackRepository RaceTrackRepository => new RaceTrackRepository();
+        public RaceRepository RaceRepository => new RaceRepository();
 
         private DatabaseManager()
         {

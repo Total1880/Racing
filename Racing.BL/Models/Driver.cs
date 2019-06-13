@@ -25,6 +25,14 @@ namespace Racing.BL.Models
             speed = inputSpeed;
             driverId = Guid.NewGuid();
         }
+
+        public Driver(string inputFirstName, string inputLastName, int inputSpeed, Guid inputDriverId)
+        {
+            firstName = inputFirstName;
+            lastName = inputLastName;
+            speed = inputSpeed;
+            driverId = inputDriverId;
+        }
         #endregion
 
         #region accessors
