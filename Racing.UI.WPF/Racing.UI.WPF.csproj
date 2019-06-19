@@ -73,6 +73,9 @@
     <Compile Include="RaceEngine\StartingConditions.xaml.cs">
       <DependentUpon>StartingConditions.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SeasonPage.xaml.cs">
+      <DependentUpon>SeasonPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ShowDrivers.xaml.cs">
       <DependentUpon>ShowDrivers.xaml</DependentUpon>
     </Compile>
@@ -108,6 +111,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RaceEngine\StartingConditions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SeasonPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

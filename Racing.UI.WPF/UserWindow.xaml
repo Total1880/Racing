@@ -19,6 +19,7 @@
             <Button Name="btnShowAllDriver" Content="Show All Drivers" Click="BtnShowAllDriver_Click"></Button>
             <Button Name="btnShowAllRaceTracks" Content="Show all racetracks" Click="BtnShowAllRaceTracks_Click"></Button>
             <Button Name="btnRace" Content="Race" Click="BtnRace_Click"></Button>
+            <Button Name="btnNewSeason" Content="New season" Click="BtnNewSeason_Click"></Button>
         </StackPanel>
 
         <Frame Name="frmUserFrame" Grid.Column="1"></Frame>

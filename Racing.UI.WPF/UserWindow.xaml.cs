@@ -38,5 +38,10 @@ namespace Racing.UI.WPF
         {
             frmUserFrame.NavigationService.Navigate(new StartingConditions());
         }
+
+        private void BtnNewSeason_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

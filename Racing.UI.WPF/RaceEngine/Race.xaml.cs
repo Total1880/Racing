@@ -47,8 +47,13 @@ namespace Racing.UI.WPF.RaceEngine
                 btnNextTurn.IsEnabled = false;
             }
 
-            return raceParticipants;
+            return PelotonCheck(raceParticipants);
         }
+
+        private IEnumerable<RaceParticipant> PelotonCheck(List<RaceParticipant> raceParticipants)
+        {
+            return raceParticipants;
+        }        
 
         private void BtnNextTurn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
