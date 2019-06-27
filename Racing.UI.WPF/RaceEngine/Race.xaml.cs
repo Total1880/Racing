@@ -1,4 +1,5 @@
 ﻿using Racing.BL.Models;
+using Racing.BL.RaceEngine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Racing.UI.WPF.RaceEngine
     public partial class Race : Page
     {
         BL.Models.Race race;
+        RaceLogic raceEngine;
         List<RaceParticipant> listOfParticipants = new List<RaceParticipant>();
 
         public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack)
@@ -19,6 +21,7 @@ namespace Racing.UI.WPF.RaceEngine
             InitializeComponent();
 
             race = new BL.Models.Race(inputListOfDrivers, inputRaceTrack);
+            raceEngine = new RaceLogic(race.RaceLength);
 
             DatabaseManager.Instance.RaceRepository.CreateRace(race);
 
@@ -32,32 +35,11 @@ namespace Racing.UI.WPF.RaceEngine
             dgParticipants.ItemsSource = listOfParticipants;
         }
 
-        private IEnumerable<RaceParticipant> Turn(List<RaceParticipant> raceParticipants)
-        {
-            Random random = new Random();
-            foreach (var participant in raceParticipants)
-            {
-                participant.Distance += random.Next(0, participant.Speed);
-            }
-
-            raceParticipants = raceParticipants.OrderByDescending(x => x.Distance).ToList();
-
-            if(raceParticipants[0].Distance >= race.RaceLength)
-            {
-                btnNextTurn.IsEnabled = false;
-            }
-
-            return PelotonCheck(raceParticipants);
-        }
-
-        private IEnumerable<RaceParticipant> PelotonCheck(List<RaceParticipant> raceParticipants)
-        {
-            return raceParticipants;
-        }        
-
         private void BtnNextTurn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            listOfParticipants = Turn(listOfParticipants).ToList();
+            listOfParticipants = raceEngine.Turn(listOfParticipants).ToList();
+
+            btnNextTurn.IsEnabled = raceEngine.IsRaceFinished(listOfParticipants);
 
             dgParticipants.ItemsSource = listOfParticipants;
         }
