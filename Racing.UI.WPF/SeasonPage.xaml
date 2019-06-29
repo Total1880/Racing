@@ -9,6 +9,15 @@
       Title="SeasonPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="1">
+            <Button Name="btnNextRace" Content="Next race" Grid.Column="1"></Button>
+        </StackPanel>
+
+        <Label Name="lblNextRace" Grid.Column="1" VerticalAlignment="Bottom"></Label>
     </Grid>
 </Page>
