@@ -41,7 +41,7 @@ namespace Racing.UI.WPF
 
         private void BtnNewSeason_Click(object sender, RoutedEventArgs e)
         {
-
+            frmUserFrame.NavigationService.Navigate(new SeasonPage(0));
         }
     }
 }

@@ -10,14 +10,25 @@ namespace Racing.UI.WPF
     /// </summary>
     public partial class SeasonPage : Page
     {
-        public SeasonPage()
+        List<RaceTrack> seasonTracks = new List<RaceTrack>();
+        List<Driver> listOfDrivers = new List<Driver>();
+        int seasonRaceNumber;
+
+        public SeasonPage(int raceNumber)
         {
             InitializeComponent();
 
-            List<RaceTrack> seasonTracks = new List<RaceTrack>();
-            int seasonRaceNumber = 0;
+            seasonRaceNumber = raceNumber;
 
             seasonTracks = DatabaseManager.Instance.RaceTrackRepository.GetAllRaceTracks().ToList();
+            listOfDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
+
+            lblNextRace.Content = "Next race: " + seasonTracks[seasonRaceNumber].Name;
+        }
+
+        private void BtnNextRace_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new Race(listOfDrivers, seasonTracks[seasonRaceNumber]));
         }
     }
 }
