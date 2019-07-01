@@ -15,12 +15,13 @@ namespace Racing.UI.WPF.RaceEngine
         BL.Models.Race race;
         RaceLogic raceEngine;
         List<RaceParticipant> listOfParticipants = new List<RaceParticipant>();
+        int raceNumber;
 
         public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack)
         {
             InitializeComponent();
 
-            btnNextRace.IsEnabled = false;
+            btnFinishRace.IsEnabled = false;
 
             foreach (var driver in inputListOfDrivers)
             {
@@ -35,6 +36,11 @@ namespace Racing.UI.WPF.RaceEngine
             dgParticipants.ItemsSource = listOfParticipants;
         }
 
+        public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack, int raceNumber) : this (inputListOfDrivers, inputRaceTrack)
+        {
+            this.raceNumber = raceNumber;
+        }
+
         private void BtnNextTurn_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             listOfParticipants = raceEngine.Turn(listOfParticipants).ToList();
@@ -46,14 +52,15 @@ namespace Racing.UI.WPF.RaceEngine
                 listOfParticipants = raceEngine.SetFinalPositionParticipants(listOfParticipants).ToList();
                 race.SetParticipantsFinalPosition(listOfParticipants);
                 DatabaseManager.Instance.RaceRepository.CreateRace(race);
+                btnFinishRace.IsEnabled = true;
             }
 
             dgParticipants.ItemsSource = listOfParticipants;
         }
 
-        private void BtnNextRace_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void BtnFinishRace_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SeasonPage(raceNumber + 1));
         }
     }
 }

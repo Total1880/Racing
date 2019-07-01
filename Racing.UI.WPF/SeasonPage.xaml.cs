@@ -23,12 +23,20 @@ namespace Racing.UI.WPF
             seasonTracks = DatabaseManager.Instance.RaceTrackRepository.GetAllRaceTracks().ToList();
             listOfDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
 
-            lblNextRace.Content = "Next race: " + seasonTracks[seasonRaceNumber].Name;
+            if (seasonRaceNumber >= seasonTracks.Count())
+            {
+                lblNextRace.Content = "Season finished";
+                btnNextRace.IsEnabled = false;
+            }
+            else
+            {
+                lblNextRace.Content = "Next race: " + seasonTracks[seasonRaceNumber].Name;
+            }
         }
 
         private void BtnNextRace_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber]));
+            NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber], seasonRaceNumber));
         }
     }
 }
