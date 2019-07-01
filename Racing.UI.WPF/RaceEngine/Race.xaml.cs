@@ -23,7 +23,8 @@ namespace Racing.UI.WPF.RaceEngine
             race = new BL.Models.Race(inputListOfDrivers, inputRaceTrack);
             raceEngine = new RaceLogic(race.RaceLength);
 
-            DatabaseManager.Instance.RaceRepository.CreateRace(race);
+            // At this moment, this isn't usefull. Stupdi of me to create this
+            //DatabaseManager.Instance.RaceRepository.CreateRace(race);
 
             foreach (var driver in inputListOfDrivers)
             {

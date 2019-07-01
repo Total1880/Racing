@@ -28,7 +28,7 @@ namespace Racing.UI.WPF
 
         private void BtnNextRace_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Race(listOfDrivers, seasonTracks[seasonRaceNumber]));
+            NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber]));
         }
     }
 }
