@@ -33,13 +33,14 @@ namespace Racing.Dapper.Repositories
                 using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
                 {
                     connection.Execute(@"
-                        INSERT INTO RaceParticipant (ParticipantId, DriverId, RaceId)
-                        VALUES (@ParticipantId, @DriverId, @RaceId)
+                        INSERT INTO RaceParticipant (ParticipantId, DriverId, RaceId, Position)
+                        VALUES (@ParticipantId, @DriverId, @RaceId, @Position)
                     ", new
                     {
                         ParticipantId = participantId,
                         DriverId = driver.DriverId,
-                        RaceId = race.RaceId
+                        RaceId = race.RaceId,
+                        Position = driver.Position
                     });
                 }
             }

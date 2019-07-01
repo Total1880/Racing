@@ -7,6 +7,7 @@ namespace Racing.BL.Models
     public class RaceParticipant : Driver
     {
         private int distance;
+        private int position = 0;
 
         public RaceParticipant(Driver driver) : base (driver.FirstName,driver.LastName,driver.Speed, driver.DriverId)
         {
@@ -17,6 +18,12 @@ namespace Racing.BL.Models
         {
             get { return distance; }
             set { distance = value; }
+        }
+
+        public int Position
+        {
+            get { return position; }
+            set { position = value; }
         }
     }
 }

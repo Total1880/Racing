@@ -41,5 +41,19 @@ namespace Racing.BL.RaceEngine
             }
             return true;
         }
+
+        public IEnumerable<RaceParticipant> SetFinalPositionParticipants(List<RaceParticipant> raceParticipants)
+        {
+            int positionCounter = 1;
+
+            foreach (var participant in raceParticipants)
+            {
+                participant.Position = positionCounter;
+
+                positionCounter++;
+            }
+
+            return raceParticipants;
+        }
     }
 }
