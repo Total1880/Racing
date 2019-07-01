@@ -24,6 +24,7 @@
 
         <StackPanel Grid.Column="1">
             <Button Name="btnNextTurn" Content="Next turn" Click="BtnNextTurn_Click"></Button>
+            <Button Name="btnNextRace" Content="Next race" Click="BtnNextRace_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

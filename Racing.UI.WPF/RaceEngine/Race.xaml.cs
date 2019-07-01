@@ -20,6 +20,8 @@ namespace Racing.UI.WPF.RaceEngine
         {
             InitializeComponent();
 
+            btnNextRace.IsEnabled = false;
+
             foreach (var driver in inputListOfDrivers)
             {
                 RaceParticipant participant = new RaceParticipant(driver);
@@ -47,6 +49,11 @@ namespace Racing.UI.WPF.RaceEngine
             }
 
             dgParticipants.ItemsSource = listOfParticipants;
+        }
+
+        private void BtnNextRace_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
         }
     }
 }
