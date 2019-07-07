@@ -54,9 +54,14 @@ namespace Racing.Dapper.Repositories
             {
                 return connection.Query<RaceParticipant>
                     (
-                        "SELECT RaceParticipant.DriverId, Driver.FirstName, Driver.LastName" +
-                        "FROM RaceParticipant" +
-                        "INNER JOIN Driver ON RaceParticipant.DriverId = Driver.DriverId"
+                        "SELECT Driver.FirstName AS FirstName, Driver.LastName AS LastName, RaceParticipant.DriverId AS DriverId, RaceParticipant.Position AS Position " +
+                        "FROM RaceParticipant " +
+                        "INNER JOIN Driver ON RaceParticipant.DriverId = Driver.DriverId " +
+                        "WHERE RaceParticipant.RaceId = @RaceId",
+                        new
+                        {
+                            RaceId = RaceId
+                        }
                     );
             }
         }

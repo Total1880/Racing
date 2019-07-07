@@ -15,6 +15,7 @@ namespace Racing.UI.WPF
         List<Driver> listOfDrivers = new List<Driver>();
         int seasonRaceNumber;
         readonly int seasonId;
+        List<SeasonParticipant> seasonParticipants = new List<SeasonParticipant>();
 
         public SeasonPage(int raceNumber, int seasonId)
         {
@@ -24,9 +25,11 @@ namespace Racing.UI.WPF
             this.seasonId = seasonId;
 
             DatabaseManager.Instance.SeasonRepository.CreateNewSeason(seasonId);
+            CalculateTable();
 
             seasonTracks = DatabaseManager.Instance.RaceTrackRepository.GetAllRaceTracks().ToList();
             listOfDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
+            dgTable.ItemsSource = seasonParticipants;
 
             if (seasonRaceNumber >= seasonTracks.Count())
             {
@@ -46,7 +49,74 @@ namespace Racing.UI.WPF
 
         private void CalculateTable()
         {
+            List<Race> seasonRaces = new List<Race>();
 
+            seasonRaces = DatabaseManager.Instance.SeasonRepository.GetRacesFromSeason(seasonId);
+
+            foreach (var seasonRace in seasonRaces)
+            {
+                foreach (var driver in seasonRace.ListOfParticipants)
+                {
+                    bool driverAlreadyInTable = false;
+
+                    foreach (var seasonParticipant in seasonParticipants)
+                    {
+                        if (seasonParticipant.DriverId == driver.DriverId)
+                        {
+                            driverAlreadyInTable = true;
+
+                            switch (driver.Position)
+                            {
+                                case 1:
+                                    seasonParticipant.Points += 5;
+                                    break;
+                                case 2:
+                                    seasonParticipant.Points += 4;
+                                    break;
+                                case 3:
+                                    seasonParticipant.Points += 3;
+                                    break;
+                                case 4:
+                                    seasonParticipant.Points += 2;
+                                    break;
+                                case 5:
+                                    seasonParticipant.Points += 1;
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                    }
+
+                    if (!driverAlreadyInTable)
+                    {
+                        SeasonParticipant newSeasonParticipant = new SeasonParticipant(driver);
+
+                        switch (driver.Position)
+                        {
+                            case 1:
+                                newSeasonParticipant.Points += 5;
+                                break;
+                            case 2:
+                                newSeasonParticipant.Points += 4;
+                                break;
+                            case 3:
+                                newSeasonParticipant.Points += 3;
+                                break;
+                            case 4:
+                                newSeasonParticipant.Points += 2;
+                                break;
+                            case 5:
+                                newSeasonParticipant.Points += 1;
+                                break;
+                            default:
+                                break;
+                        }
+
+                        seasonParticipants.Add(newSeasonParticipant);
+                    }
+                }
+            }
         }
     }
 }

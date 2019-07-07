@@ -50,6 +50,7 @@ namespace Racing.Dapper.Repositories
             foreach (Guid raceId in RaceListId)
             {
                 Race race = new Race(raceId, raceRepository.GetRaceParticipantsOfRace(raceId).ToList());
+                RaceList.Add(race);
             }
 
             return RaceList;
@@ -61,10 +62,21 @@ namespace Racing.Dapper.Repositories
             {
                 return connection.Query<Guid>
                     (
-                        "SELECT RaceId" +
-                        "FROM Race" +
-                        "WHERE SeasonId = @SeasonId"
-                    );
+                        "SELECT RaceId " +
+                        "FROM Race " +
+                        "WHERE SeasonId = @SeasonId",
+                        new
+                        {
+                            SeasonId = SeasonId
+                        });
+
+                //connection.Execute(@"
+                //    DELETE FROM Driver
+                //    WHERE DriverId = @DriverId
+                //", new
+                //{
+                //    DriverId = driver.DriverId
+                //});
             }
         }
     }

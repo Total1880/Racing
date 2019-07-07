@@ -14,6 +14,11 @@ namespace Racing.BL.Models
             distance = 0;
         }
 
+        public RaceParticipant(string FirstName, string LastName, Guid DriverId, int Position) : base(FirstName,LastName,DriverId)
+        {
+            position = Position;
+        }
+
         public int Distance
         {
             get { return distance; }

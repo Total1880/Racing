@@ -8,6 +8,10 @@ namespace Racing.BL.Models
     {
         private int points = 0;
 
+        public SeasonParticipant(Driver driver) : base(driver.FirstName, driver.LastName, driver.Speed, driver.DriverId)
+        {
+            points = 0;
+        }
         public int Points
         {
             get
