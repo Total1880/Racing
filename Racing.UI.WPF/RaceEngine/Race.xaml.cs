@@ -16,6 +16,7 @@ namespace Racing.UI.WPF.RaceEngine
         RaceLogic raceEngine;
         List<RaceParticipant> listOfParticipants = new List<RaceParticipant>();
         int raceNumber;
+        int seasonId;
 
         public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack)
         {
@@ -36,9 +37,10 @@ namespace Racing.UI.WPF.RaceEngine
             dgParticipants.ItemsSource = listOfParticipants;
         }
 
-        public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack, int raceNumber) : this (inputListOfDrivers, inputRaceTrack)
+        public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack, int raceNumber, int seasonId) : this (inputListOfDrivers, inputRaceTrack)
         {
             this.raceNumber = raceNumber;
+            this.seasonId = seasonId;
         }
 
         private void BtnNextTurn_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -51,7 +53,7 @@ namespace Racing.UI.WPF.RaceEngine
             {
                 listOfParticipants = raceEngine.SetFinalPositionParticipants(listOfParticipants).ToList();
                 race.SetParticipantsFinalPosition(listOfParticipants);
-                DatabaseManager.Instance.RaceRepository.CreateRace(race);
+                DatabaseManager.Instance.RaceRepository.CreateRace(race, seasonId);
                 btnFinishRace.IsEnabled = true;
             }
 
@@ -60,7 +62,7 @@ namespace Racing.UI.WPF.RaceEngine
 
         private void BtnFinishRace_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SeasonPage(raceNumber + 1));
+            NavigationService.Navigate(new SeasonPage(raceNumber + 1, seasonId));
         }
     }
 }

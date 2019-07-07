@@ -9,9 +9,17 @@ namespace Racing.UI.WPF
     /// </summary>
     public partial class UserWindow : Page
     {
+
+        int seasonId = DatabaseManager.Instance.SeasonRepository.GetSeasonNumber();
+
         public UserWindow()
         {
             InitializeComponent();
+
+            if (seasonId < 1)
+            {
+                seasonId = 0;
+            }
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -41,7 +49,7 @@ namespace Racing.UI.WPF
 
         private void BtnNewSeason_Click(object sender, RoutedEventArgs e)
         {
-            frmUserFrame.NavigationService.Navigate(new SeasonPage(0));
+            frmUserFrame.NavigationService.Navigate(new SeasonPage(0, seasonId++));
         }
     }
 }

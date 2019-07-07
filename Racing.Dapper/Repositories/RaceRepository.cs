@@ -8,19 +8,20 @@ namespace Racing.Dapper.Repositories
 {
     public class RaceRepository
     {
-        public void CreateRace(Race newRace)
+        public void CreateRace(Race newRace, int seasonId)
         {
             CreateRaceParticipants(newRace);
 
             using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
             {
                 connection.Execute(@"
-                    INSERT INTO Race (RaceId, RaceTrackId)
-                    VALUES (@RaceId, @RaceTrackId)
+                    INSERT INTO Race (RaceId, RaceTrackId, SeasonId)
+                    VALUES (@RaceId, @RaceTrackId, @SeasonId)
                 ", new
                 {
                     RaceId = newRace.RaceId,
-                    RaceTrackId = newRace.RaceTrackId
+                    RaceTrackId = newRace.RaceTrackId,
+                    SeasonId = seasonId
                 });
             }
         }

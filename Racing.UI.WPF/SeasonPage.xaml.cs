@@ -13,12 +13,16 @@ namespace Racing.UI.WPF
         List<RaceTrack> seasonTracks = new List<RaceTrack>();
         List<Driver> listOfDrivers = new List<Driver>();
         int seasonRaceNumber;
+        readonly int seasonId;
 
-        public SeasonPage(int raceNumber)
+        public SeasonPage(int raceNumber, int seasonId)
         {
             InitializeComponent();
 
             seasonRaceNumber = raceNumber;
+            this.seasonId = seasonId;
+
+            DatabaseManager.Instance.SeasonRepository.CreateNewSeason(seasonId);
 
             seasonTracks = DatabaseManager.Instance.RaceTrackRepository.GetAllRaceTracks().ToList();
             listOfDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
@@ -36,7 +40,7 @@ namespace Racing.UI.WPF
 
         private void BtnNextRace_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber], seasonRaceNumber));
+            NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber], seasonRaceNumber, seasonId));
         }
     }
 }
