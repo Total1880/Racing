@@ -11,6 +11,7 @@ namespace Racing.BL.Models
         private readonly Guid raceTrackId;
         private readonly int raceLength;
 
+        #region Constructors
         public Race(List<RaceParticipant> inputListOfParticipants, RaceTrack raceTrack)
         {
             raceId = Guid.NewGuid();
@@ -24,6 +25,7 @@ namespace Racing.BL.Models
             this.raceId = raceId;
             listOfParticipants = inputListOfParticipants;
         }
+        #endregion
 
         #region Accessors
         public Guid RaceId
