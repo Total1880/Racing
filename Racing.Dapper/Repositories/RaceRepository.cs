@@ -3,6 +3,7 @@ using Racing.BL.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace Racing.Dapper.Repositories
 {
@@ -44,6 +45,19 @@ namespace Racing.Dapper.Repositories
                         Position = driver.Position
                     });
                 }
+            }
+        }
+
+        public IEnumerable<RaceParticipant> GetRaceParticipantsOfRace(Guid RaceId)
+        {
+            using (var connection = new SqlConnection(Connection.Instance.ConnectionString))
+            {
+                return connection.Query<RaceParticipant>
+                    (
+                        "SELECT RaceParticipant.DriverId, Driver.FirstName, Driver.LastName" +
+                        "FROM RaceParticipant" +
+                        "INNER JOIN Driver ON RaceParticipant.DriverId = Driver.DriverId"
+                    );
             }
         }
     }

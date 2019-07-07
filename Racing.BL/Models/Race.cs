@@ -19,6 +19,12 @@ namespace Racing.BL.Models
             raceLength = raceTrack.Length;
         }
 
+        public Race(Guid raceId, List<RaceParticipant> inputListOfParticipants)
+        {
+            this.raceId = raceId;
+            listOfParticipants = inputListOfParticipants;
+        }
+
         #region Accessors
         public Guid RaceId
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Linq;
+using System;
 
 namespace Racing.UI.WPF
 {
@@ -41,6 +42,11 @@ namespace Racing.UI.WPF
         private void BtnNextRace_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber], seasonRaceNumber, seasonId));
+        }
+
+        private void CalculateTable()
+        {
+
         }
     }
 }
