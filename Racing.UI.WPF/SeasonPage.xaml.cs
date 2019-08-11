@@ -18,16 +18,16 @@ namespace Racing.UI.WPF
         List<SeasonParticipant> seasonParticipants = new List<SeasonParticipant>();
         Season thisSeason;
 
-        public SeasonPage(int raceNumber, int seasonId)
+        public SeasonPage(int seasonId)
         {
             InitializeComponent();
 
-            seasonRaceNumber = raceNumber;
             this.seasonId = seasonId;
             thisSeason = new Season(seasonId);
             List<Race> seasonRaces = new List<Race>();
 
             seasonRaces = DatabaseManager.Instance.SeasonRepository.GetRacesFromSeason(seasonId);
+            seasonRaceNumber = seasonRaces.Count();
 
             DatabaseManager.Instance.SeasonRepository.CreateNewSeason(seasonId);
             thisSeason.CalculateTable(seasonRaces, seasonParticipants);

@@ -62,7 +62,7 @@ namespace Racing.UI.WPF.RaceEngine
 
         private void BtnFinishRace_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SeasonPage(raceNumber + 1, seasonId));
+            NavigationService.Navigate(new SeasonPage(seasonId));
         }
     }
 }
