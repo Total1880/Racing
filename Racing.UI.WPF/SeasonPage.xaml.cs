@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Linq;
-using System;
+using System.Windows;
 
 namespace Racing.UI.WPF
 {
@@ -40,6 +40,7 @@ namespace Racing.UI.WPF
             {
                 lblNextRace.Content = "Season finished";
                 btnNextRace.IsEnabled = false;
+                btnNextSeason.Visibility = Visibility.Visible;
             }
             else
             {
@@ -52,6 +53,11 @@ namespace Racing.UI.WPF
             NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber], seasonRaceNumber, seasonId));
         }
 
-        
+        private void BtnNextSeason_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            int newSeasonId = seasonId + 1;
+
+            NavigationService.Navigate(new SeasonPage(newSeasonId));
+        }
     }
 }

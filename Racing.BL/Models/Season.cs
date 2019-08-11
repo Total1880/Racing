@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace Racing.BL.Models
 {
@@ -79,6 +80,8 @@ namespace Racing.BL.Models
                     }
                 }
             }
+
+            seasonParticipants = seasonParticipants.OrderByDescending(x => x.Points).ToList();
         }
     }
 }
