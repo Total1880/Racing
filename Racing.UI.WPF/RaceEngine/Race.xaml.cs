@@ -15,15 +15,14 @@ namespace Racing.UI.WPF.RaceEngine
         BL.Models.Race race;
         RaceLogic raceEngine;
         List<RaceParticipant> listOfParticipants = new List<RaceParticipant>();
+        int raceNumber;
+        int seasonId;
 
         public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack)
         {
             InitializeComponent();
 
-            race = new BL.Models.Race(inputListOfDrivers, inputRaceTrack);
-            raceEngine = new RaceLogic(race.RaceLength);
-
-            DatabaseManager.Instance.RaceRepository.CreateRace(race);
+            btnFinishRace.IsEnabled = false;
 
             foreach (var driver in inputListOfDrivers)
             {
@@ -32,7 +31,16 @@ namespace Racing.UI.WPF.RaceEngine
                 listOfParticipants.Add(participant);
             }
 
+            race = new BL.Models.Race(listOfParticipants, inputRaceTrack);
+            raceEngine = new RaceLogic(race.RaceLength);
+
             dgParticipants.ItemsSource = listOfParticipants;
+        }
+
+        public Race(List<Driver> inputListOfDrivers, RaceTrack inputRaceTrack, int raceNumber, int seasonId) : this (inputListOfDrivers, inputRaceTrack)
+        {
+            this.raceNumber = raceNumber;
+            this.seasonId = seasonId;
         }
 
         private void BtnNextTurn_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -41,7 +49,20 @@ namespace Racing.UI.WPF.RaceEngine
 
             btnNextTurn.IsEnabled = raceEngine.IsRaceFinished(listOfParticipants);
 
+            if (btnNextTurn.IsEnabled == false)
+            {
+                listOfParticipants = raceEngine.SetFinalPositionParticipants(listOfParticipants).ToList();
+                race.SetParticipantsFinalPosition(listOfParticipants);
+                DatabaseManager.Instance.RaceRepository.CreateRace(race, seasonId);
+                btnFinishRace.IsEnabled = true;
+            }
+
             dgParticipants.ItemsSource = listOfParticipants;
+        }
+
+        private void BtnFinishRace_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SeasonPage(raceNumber + 1, seasonId));
         }
     }
 }

@@ -7,11 +7,12 @@ namespace Racing.BL.Models
     public class Race
     {
         private readonly Guid raceId;
-        private readonly List<Driver> listOfParticipants;
+        private readonly List<RaceParticipant> listOfParticipants;
         private readonly Guid raceTrackId;
         private readonly int raceLength;
 
-        public Race(List<Driver> inputListOfParticipants, RaceTrack raceTrack)
+        #region Constructors
+        public Race(List<RaceParticipant> inputListOfParticipants, RaceTrack raceTrack)
         {
             raceId = Guid.NewGuid();
             listOfParticipants = inputListOfParticipants;
@@ -19,13 +20,20 @@ namespace Racing.BL.Models
             raceLength = raceTrack.Length;
         }
 
+        public Race(List<RaceParticipant> inputListOfParticipants, Guid raceId)
+        {
+            this.raceId = raceId;
+            listOfParticipants = inputListOfParticipants;
+        }
+        #endregion
+
         #region Accessors
         public Guid RaceId
         {
             get { return raceId; }
         }
 
-        public List<Driver> ListOfParticipants
+        public List<RaceParticipant> ListOfParticipants
         {
             get { return listOfParticipants; }
         }
@@ -39,6 +47,24 @@ namespace Racing.BL.Models
         {
             get { return raceLength; }
         }
+        #endregion
+
+        #region Functions
+
+        public void SetParticipantsFinalPosition(List<RaceParticipant> finalListOfParticipants)
+        {
+            foreach (var finalParticipant in finalListOfParticipants)
+            {
+                foreach (var participant in listOfParticipants)
+                {
+                    if (participant.DriverId == finalParticipant.DriverId)
+                    {
+                        participant.Position = finalParticipant.Position;
+                    }
+                }
+            }
+        }
+
         #endregion
     }
 }

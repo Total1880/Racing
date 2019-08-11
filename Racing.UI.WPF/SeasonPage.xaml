@@ -14,8 +14,12 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
+        <DataGrid Name="dgTable" AutoGenerateColumns="True">
+            
+        </DataGrid>
+
         <StackPanel Grid.Column="1">
-            <Button Name="btnNextRace" Content="Next race" Grid.Column="1"></Button>
+            <Button Name="btnNextRace" Content="Next race" Grid.Column="1" Click="BtnNextRace_Click"></Button>
         </StackPanel>
 
         <Label Name="lblNextRace" Grid.Column="1" VerticalAlignment="Bottom"></Label>
