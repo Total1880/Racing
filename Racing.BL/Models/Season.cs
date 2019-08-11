@@ -80,8 +80,6 @@ namespace Racing.BL.Models
                     }
                 }
             }
-
-            seasonParticipants = seasonParticipants.OrderByDescending(x => x.Points).ToList();
         }
     }
 }

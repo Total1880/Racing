@@ -34,7 +34,7 @@ namespace Racing.UI.WPF
 
             seasonTracks = DatabaseManager.Instance.RaceTrackRepository.GetAllRaceTracks().ToList();
             listOfDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
-            dgTable.ItemsSource = seasonParticipants;
+            dgTable.ItemsSource = seasonParticipants.OrderByDescending(x => x.Points).ToList(); ;
 
             if (seasonRaceNumber >= seasonTracks.Count())
             {
