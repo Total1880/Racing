@@ -49,7 +49,7 @@ namespace Racing.Dapper.Repositories
 
             foreach (Guid raceId in RaceListId)
             {
-                Race race = new Race(raceId, raceRepository.GetRaceParticipantsOfRace(raceId).ToList());
+                Race race = new Race(raceRepository.GetRaceParticipantsOfRace(raceId).ToList(), raceId);
                 RaceList.Add(race);
             }
 

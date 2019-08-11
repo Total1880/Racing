@@ -16,6 +16,7 @@ namespace Racing.UI.WPF
         int seasonRaceNumber;
         readonly int seasonId;
         List<SeasonParticipant> seasonParticipants = new List<SeasonParticipant>();
+        Season thisSeason;
 
         public SeasonPage(int raceNumber, int seasonId)
         {
@@ -23,9 +24,13 @@ namespace Racing.UI.WPF
 
             seasonRaceNumber = raceNumber;
             this.seasonId = seasonId;
+            thisSeason = new Season(seasonId);
+            List<Race> seasonRaces = new List<Race>();
+
+            seasonRaces = DatabaseManager.Instance.SeasonRepository.GetRacesFromSeason(seasonId);
 
             DatabaseManager.Instance.SeasonRepository.CreateNewSeason(seasonId);
-            CalculateTable();
+            thisSeason.CalculateTable(seasonRaces, seasonParticipants);
 
             seasonTracks = DatabaseManager.Instance.RaceTrackRepository.GetAllRaceTracks().ToList();
             listOfDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
@@ -47,76 +52,6 @@ namespace Racing.UI.WPF
             NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber], seasonRaceNumber, seasonId));
         }
 
-        private void CalculateTable()
-        {
-            List<Race> seasonRaces = new List<Race>();
-
-            seasonRaces = DatabaseManager.Instance.SeasonRepository.GetRacesFromSeason(seasonId);
-
-            foreach (var seasonRace in seasonRaces)
-            {
-                foreach (var driver in seasonRace.ListOfParticipants)
-                {
-                    bool driverAlreadyInTable = false;
-
-                    foreach (var seasonParticipant in seasonParticipants)
-                    {
-                        if (seasonParticipant.DriverId == driver.DriverId)
-                        {
-                            driverAlreadyInTable = true;
-
-                            switch (driver.Position)
-                            {
-                                case 1:
-                                    seasonParticipant.Points += 5;
-                                    break;
-                                case 2:
-                                    seasonParticipant.Points += 4;
-                                    break;
-                                case 3:
-                                    seasonParticipant.Points += 3;
-                                    break;
-                                case 4:
-                                    seasonParticipant.Points += 2;
-                                    break;
-                                case 5:
-                                    seasonParticipant.Points += 1;
-                                    break;
-                                default:
-                                    break;
-                            }
-                        }
-                    }
-
-                    if (!driverAlreadyInTable)
-                    {
-                        SeasonParticipant newSeasonParticipant = new SeasonParticipant(driver);
-
-                        switch (driver.Position)
-                        {
-                            case 1:
-                                newSeasonParticipant.Points += 5;
-                                break;
-                            case 2:
-                                newSeasonParticipant.Points += 4;
-                                break;
-                            case 3:
-                                newSeasonParticipant.Points += 3;
-                                break;
-                            case 4:
-                                newSeasonParticipant.Points += 2;
-                                break;
-                            case 5:
-                                newSeasonParticipant.Points += 1;
-                                break;
-                            default:
-                                break;
-                        }
-
-                        seasonParticipants.Add(newSeasonParticipant);
-                    }
-                }
-            }
-        }
+        
     }
 }

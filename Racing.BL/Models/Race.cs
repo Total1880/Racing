@@ -20,7 +20,7 @@ namespace Racing.BL.Models
             raceLength = raceTrack.Length;
         }
 
-        public Race(Guid raceId, List<RaceParticipant> inputListOfParticipants)
+        public Race(List<RaceParticipant> inputListOfParticipants, Guid raceId)
         {
             this.raceId = raceId;
             listOfParticipants = inputListOfParticipants;
