@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Linq;
-using System;
+using System.Windows;
 
 namespace Racing.UI.WPF
 {
@@ -18,28 +18,29 @@ namespace Racing.UI.WPF
         List<SeasonParticipant> seasonParticipants = new List<SeasonParticipant>();
         Season thisSeason;
 
-        public SeasonPage(int raceNumber, int seasonId)
+        public SeasonPage(int seasonId)
         {
             InitializeComponent();
 
-            seasonRaceNumber = raceNumber;
             this.seasonId = seasonId;
             thisSeason = new Season(seasonId);
             List<Race> seasonRaces = new List<Race>();
 
             seasonRaces = DatabaseManager.Instance.SeasonRepository.GetRacesFromSeason(seasonId);
+            seasonRaceNumber = seasonRaces.Count();
 
             DatabaseManager.Instance.SeasonRepository.CreateNewSeason(seasonId);
             thisSeason.CalculateTable(seasonRaces, seasonParticipants);
 
             seasonTracks = DatabaseManager.Instance.RaceTrackRepository.GetAllRaceTracks().ToList();
             listOfDrivers = DatabaseManager.Instance.DriverRepository.GetAllDrivers().ToList();
-            dgTable.ItemsSource = seasonParticipants;
+            dgTable.ItemsSource = seasonParticipants.OrderByDescending(x => x.Points).ToList(); ;
 
             if (seasonRaceNumber >= seasonTracks.Count())
             {
                 lblNextRace.Content = "Season finished";
                 btnNextRace.IsEnabled = false;
+                btnNextSeason.Visibility = Visibility.Visible;
             }
             else
             {
@@ -52,6 +53,11 @@ namespace Racing.UI.WPF
             NavigationService.Navigate(new RaceEngine.Race(listOfDrivers, seasonTracks[seasonRaceNumber], seasonRaceNumber, seasonId));
         }
 
-        
+        private void BtnNextSeason_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            int newSeasonId = seasonId + 1;
+
+            NavigationService.Navigate(new SeasonPage(newSeasonId));
+        }
     }
 }

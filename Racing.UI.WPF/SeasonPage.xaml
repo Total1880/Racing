@@ -19,7 +19,8 @@
         </DataGrid>
 
         <StackPanel Grid.Column="1">
-            <Button Name="btnNextRace" Content="Next race" Grid.Column="1" Click="BtnNextRace_Click"></Button>
+            <Button Name="btnNextRace" Content="Next race" Click="BtnNextRace_Click"></Button>
+            <Button Name="btnNextSeason" Content="Next season" Visibility="Hidden" Click="BtnNextSeason_Click"></Button>
         </StackPanel>
 
         <Label Name="lblNextRace" Grid.Column="1" VerticalAlignment="Bottom"></Label>
